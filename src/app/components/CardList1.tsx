@@ -78,7 +78,7 @@ const cardsData: CardList1Props[] = [
 
 const CardList1: React.FC = () => {
     return (
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 grid-sm gap-2">
             {cardsData.map((card, index) => (
                 <Card1
                     key={index}

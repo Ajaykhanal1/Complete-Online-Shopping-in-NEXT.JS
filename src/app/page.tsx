@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import CardList1 from "./components/CardList1";
 import CardList2 from "./components/CardList2";
-
+import CardList3 from "./components/CardList3";
 export default function Home() {
   const [index, setIndex] = useState(0);
   const slides=[
@@ -47,7 +47,7 @@ export default function Home() {
     <CardList2/>
 
     <h1 className="color-gray-800 bg-gray-300 p-2 text-2xl mt-1 pt-5">Just For You</h1>
-
+    <CardList3/>
   </main>
   );
 }
