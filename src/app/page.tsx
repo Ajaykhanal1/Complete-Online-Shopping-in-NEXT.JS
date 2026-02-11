@@ -46,7 +46,7 @@ export default function Home() {
     <h1 className="color-gray-800 bg-gray-300 p-2 text-2xl mt-1 pt-5">Categories</h1>
     <CardList2/>
 
-        <h1 className="color-gray-800 bg-gray-300 p-2 text-2xl mt-1 pt-5">Just For You</h1>
+    <h1 className="color-gray-800 bg-gray-300 p-2 text-2xl mt-1 pt-5">Just For You</h1>
 
   </main>
   );
