@@ -91,9 +91,6 @@ export default function Home() {
             <li><a href="#">Code of Conduct</a></li>
           </ul>
         </div>
-
-
-
         <div className="thirdFirst flex justify-between">
           <div><img className="w-30" src="/image/logo.png" alt="Logo" /></div>
           <div className="">
