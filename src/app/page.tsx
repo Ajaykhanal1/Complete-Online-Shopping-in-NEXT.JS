@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import CardList1 from "./components/CardList1";
+import CardList2 from "./components/CardList2";
 
 export default function Home() {
   const [index, setIndex] = useState(0);
@@ -34,12 +35,19 @@ export default function Home() {
       </div>
     </div>
 
-    <h1 className="color-gray-800 bg-gray-300 p-2 text-2xl mt-1">Flash Sale</h1>
+    <h1 className="color-gray-800 bg-gray-300 p-2 text-2xl mt-1 pt-5">Flash Sale</h1>
     <div className="text-orange-500 border-b-2 border-gray-300 flex justify-between p-2 mt-2">
       <h1 className="ml-10 ">On Sale Now</h1>
       <input className="mr-10 border border-orange-500 p-1" type="submit" value="SHOP ALL PRODUCTS" />
     </div>
+
     <CardList1 />
+
+    <h1 className="color-gray-800 bg-gray-300 p-2 text-2xl mt-1 pt-5">Categories</h1>
+    <CardList2/>
+
+        <h1 className="color-gray-800 bg-gray-300 p-2 text-2xl mt-1 pt-5">Just For You</h1>
+
   </main>
   );
 }
