@@ -1,11 +1,31 @@
 "use client"; // needed for client-side interactivity (like toggle menu)
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
-// Using react-icons for the search icon
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  // State to manage the open/close state of the login modal
+  const [open, setOpen] = useState(false);
+
+  // To switch Tab
+  const [activeTab, setActiveTab] = useState("password");
+
+  // Add useEffect to handle scroll in model views
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [open]);
 
   return (
     <nav className="bg-orange-500 text-white">
@@ -31,10 +51,111 @@ const Navbar = () => {
           <li><Link href="/about">ABOUT</Link></li>
           <li><Link href="/services">SERVICES</Link></li>
           <li><Link href="/contact">CONTACT</Link></li>
-          <li><Link href="/login">LOGIN</Link></li>
+          <li><button className="cursor-pointer"
+            onClick={() => setOpen(true)}>LOGIN
+          </button></li>
           <li><Link href="/signUp">SIGN UP</Link></li>
         </ul>
       </div>
+
+      {/* Login Modal */}
+      {open && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-xs z-50 " onClick={() => setOpen(false)} >
+          <div className="h-108 w-100 border border-solid border-white rounded-lg bg-white text-black p-5" onClick={(e) => e.stopPropagation()}>
+
+            <div className="flex justify-end mr-4">
+              <button className="text-gary-500 cursor-pointer" onClick={() => setOpen(false)}>
+                &#x2715;
+              </button>
+            </div>
+
+            {/* Tabs for Password and Phone Number*/}
+            <div className="flex justify-evenly">
+
+              <div onClick={() => setActiveTab('password')}
+                style={{
+                  cursor: 'pointer',
+                  fontWeight: activeTab === 'password' ? 'bold' : 'normal',
+                  borderBottom: activeTab === 'password' ? '2px solid orange' : 'none',
+                  paddingBottom: '5px'
+                }} >
+                Password
+              </div>
+
+
+              <div
+                onClick={() => setActiveTab('phone')}
+                style={{
+                  cursor: 'pointer',
+                  fontWeight: activeTab === 'phone' ? 'bold' : 'normal',
+                  borderBottom: activeTab === 'phone' ? '2px solid orange' : 'none',
+                  paddingBottom: '5px'
+                }}
+              >
+                Phone Number
+              </div>
+            </div>
+
+            <div className="flex flex-row my-3 ">
+              {activeTab === 'password' && (
+                <form className="w-full gap-4 flex flex-col">
+
+                  <div className=" ">
+                    <input className="w-full h-10 p-2 border border-gray-400 rounded-lg focus:border-blue-300 focus:ring-1 focus:ring-blue-300 focus:outline-none font-mono placeholder:text-sm" type="text" name="Please enter your Phone or Email" id="" placeholder="Please enter your Phone or Email" />
+                  </div>
+
+                  <div className="">
+                    <input className=" w-full h-10 p-2 border border-gray-400 rounded-lg focus:border-blue-300 focus:ring-1 focus:ring-blue-300 focus:outline-none font-mono placeholder:text-sm" type="password" name="Please enter your Password" id="" placeholder="Please enter your Password" />
+                  </div>
+
+                  <div className="flex justify-end text-gray-600">
+                    <h5>Forgot Password?</h5>
+                  </div>
+
+                  <button className="bg-orange-400 text-white border rounded-lg h-10 font-mono text-lg cursor-pointer">LOGIN</button>
+                </form>
+              )}
+
+              {/* Phone Form */}
+              {activeTab === 'phone' && (
+                <form className="w-full gap-4 flex flex-col">
+                  <div className="flex gap-2 w-full my-8">
+                    <div>
+                      <input className="w-19 h-10 pl-2 border border-gray-400 rounded-lg focus:border-blue-300 focus:ring-1 focus:ring-blue-300 focus:outline-none font-mono placeholder-gray-950 placeholder:text-sm" type="number" placeholder="🇳🇵+977" disabled />
+                    </div>
+                    <div className="w-full">
+                      <input className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full h-10 p-2 border border-gray-400 rounded-lg focus:border-blue-300 focus:ring-1 focus:ring-blue-300 focus:outline-none font-mono placeholder:text-sm" type="number" placeholder="Please enter your phone number" />
+                    </div>
+                  </div>
+                  <button className="flex items-center bg-orange-400 text-white border rounded-lg h-10 font-mono text-lg cursor-pointer " >
+                    <img className="w-7 ml-3 mr-13 " src="https://lzd-img-global.slatic.net/g/tps/i1/O1CN019amlRf1wUwlLW2cmN_!!6000000006312-2-tps-85-85.png" alt="" />
+                    <h5>Send code via SMS</h5>
+                  </button>
+                </form>
+
+              )}
+            </div>
+
+            <div className="text-gray-600 flex justify-center gap-1">Don't have an account? <span className="text-blue-600 cursor-pointer">Sign up</span></div>
+            <div className="text-gray-600 flex justify-center mt-10">Or, login with</div>
+
+            <div className="flex justify-center gap-3 mt-1">
+
+              <div className="flex items-center gap-1">
+                <img className="w-10" src="https://static.vecteezy.com/system/resources/previews/011/598/471/original/google-logo-icon-illustration-free-vector.jpg" alt="Google" />
+                <h5>Google</h5>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <img className="w-7" src="https://freepnglogo.com/images/all_img/facebook-logo.png" alt="Facebook" />
+                <h5>Facebook</h5>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
+
     </nav>
   );
 };
