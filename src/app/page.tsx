@@ -142,9 +142,8 @@ export default function Home() {
 
         <div className=" p-2 ">
           <div className="text-xs">new products are added every day to cater to all your needs. Visit Bazar.com.np to experience shopping in Nepal as never before. Don't forget to Download Bazar App and get exclusive discounts.
-            <div className="mt-1
-            ">            Bazar is a global online marketplace with ecommerce stores in <span className="text-blue-700">Pakistan</span>, <span className="text-blue-700">Bangladesh</span>, <span className="text-blue-700">Nepal</span>, <span className="text-blue-700">Sri Lanka</span> and <span className="text-blue-700">Myanmar</span>.
-            </div>            <div className="m-2 ml-0">General Information:</div>
+            <div className="mt-1">Bazar is a global online marketplace with ecommerce stores in <span className="text-blue-700">Pakistan</span>, <span className="text-blue-700">Bangladesh</span>, <span className="text-blue-700">Nepal</span>, <span className="text-blue-700">Sri Lanka</span> and <span className="text-blue-700">Myanmar</span>.
+            </div> <div className="m-2 ml-0">General Information:</div>
             <div className="mb-2">            Bazar Kaymu Private Limited
               Kathmandu Metropolitan City, Ward No. 11,Thapathali,Kathmandu, Nepal
               VAT No. 602403687</div>
